@@ -21,7 +21,7 @@ RUN curl -OL https://github.com/mongodb/mongo-cxx-driver/releases/download/r4.1.
     make install
 
 WORKDIR /app
-COPY CMakeLists.txt main.cpp credentials.json ./
+COPY CMakeLists.txt main.cpp ./
 COPY include ./include
 COPY server ./server
 COPY router ./router
