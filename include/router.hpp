@@ -5,10 +5,10 @@
 
 class Router {
 	private:
-		crow::SimpleApp& _app;
+		crow::App<crow::CORSHandler>& _app;
 	
 	public :
-		Router(crow::SimpleApp& app);
+		Router(crow::App<crow::CORSHandler>& app);
 		void SetupRoutes();
 };
 

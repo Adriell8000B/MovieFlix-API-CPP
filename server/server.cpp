@@ -5,7 +5,7 @@
 #include <exception>
 #include <iostream>
 
-Server::Server(crow::SimpleApp& app, Router& router, Database& database,const uint16_t PORT) :
+Server::Server(crow::App<crow::CORSHandler>& app, Router& router, Database& database,const uint16_t PORT) :
 _app(app),
 _router(router),
 _database(database),

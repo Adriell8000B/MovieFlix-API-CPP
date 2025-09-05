@@ -8,7 +8,7 @@
 
 class Server {
 	private:
-	crow::SimpleApp& _app;
+	crow::App<crow::CORSHandler>& _app;
 	Router& _router;
 	Database& _database;
 	const uint16_t _PORT;
@@ -16,7 +16,7 @@ class Server {
 	void setup();
 
 	public:
-	Server(crow::SimpleApp& app, Router& router, Database& database, const uint16_t PORT);
+	Server(crow::App<crow::CORSHandler>& app, Router& router, Database& database, const uint16_t PORT);
 	void Init();
 };
 
