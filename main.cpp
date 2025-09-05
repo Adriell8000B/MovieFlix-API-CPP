@@ -9,7 +9,7 @@
 int main(void) {
   setup_enviroment();
 
-  crow::SimpleApp app;
+  crow::App<crow::CORSHandler> app;
   Router router(app);
   Database database(std::string(std::getenv("MONGODB_URI")));
 
