@@ -34,6 +34,7 @@ COPY database ./database
 COPY middlewares ./middlewares
 COPY repositories ./repositories
 COPY models ./models
+COPY controllers ./controllers
 
 # Build source code
 RUN cmake -B build -S . -DCMAKE_BUILD_TYPE=Release
