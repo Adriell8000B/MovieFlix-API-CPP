@@ -11,13 +11,14 @@ add_executable(MovieFlix-API-CPP
 	database/database.cpp
 	utils/utils.cpp
 	middlewares/middlewares.cpp
+	repositories/movie-repository.cpp
 )
 
 target_include_directories(
 	MovieFlix-API-CPP PRIVATE
 	${CMAKE_CURRENT_SOURCE_DIR}/include
+	${CMAKE_CURRENT_SOURCE_DIR}/models
 )
-
 
 target_link_libraries(
 	MovieFlix-API-CPP PRIVATE
