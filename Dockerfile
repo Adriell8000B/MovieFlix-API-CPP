@@ -32,6 +32,8 @@ COPY router ./router
 COPY utils ./utils
 COPY database ./database
 COPY middlewares ./middlewares
+COPY repositories ./repositories
+COPY models ./models
 
 # Build source code
 RUN cmake -B build -S . -DCMAKE_BUILD_TYPE=Release
