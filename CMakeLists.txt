@@ -12,6 +12,7 @@ add_executable(MovieFlix-API-CPP
 	utils/utils.cpp
 	middlewares/middlewares.cpp
 	repositories/movie-repository.cpp
+	controllers/movie-controller.cpp
 )
 
 target_include_directories(
