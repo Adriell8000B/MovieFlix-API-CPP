@@ -2,6 +2,7 @@
 #include "crow_all.h"
 #include "database.hpp"
 #include "middlewares.hpp"
+#include "router.hpp"
 #include <cstdint>
 #include <exception>
 #include <iostream>
@@ -28,9 +29,9 @@ void Server::listen() {
 }
 
 void Server::setup() {
+	this->_middlewares.SetupMiddlewares();
 	this->_router.SetupRoutes();
 	this->_database.SetupDatabase();
-	this->_middlewares.SetupMiddlewares();
 }
 
 void Server::Init() {
