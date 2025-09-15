@@ -1,6 +1,6 @@
 #include "movie_model.hpp"
 #include "movie_repository.hpp"
-#include <exception>
+#include <bsoncxx/document/view-fwd.hpp>
 #include <mongocxx/client.hpp>
 #include <mongocxx/collection-fwd.hpp>
 #include <mongocxx/database.hpp>
@@ -23,18 +23,15 @@ _collection_name(collection_name)
 {}
 
 std::vector<std::string> MovieRepository::RetrieveMovies() {
-	std::vector<std::string> movies_vector;
 	auto cursor = this->_client
 	.database(this->_database_name)
 	.collection(this->_collection_name).find({});
 
-	try {
-		for(auto&& doc : cursor) {
-			movies_vector.push_back(bsoncxx::to_json(doc));
-		}
-	} catch (std::exception& e) {
-		std::cout << "Couldn't get movies: " << e.what() << "\n";
+	std::vector<std::string> movies;
+
+	for (auto&& doc : cursor) {
+		movies.push_back(bsoncxx::to_json(doc));
 	}
 
-	return movies_vector;
+	return movies;
 }

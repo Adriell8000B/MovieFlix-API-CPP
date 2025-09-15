@@ -25,16 +25,16 @@ RUN curl --fail -OL https://github.com/mongodb/mongo-cxx-driver/releases/downloa
 
 # Copy source code
 WORKDIR /app
-COPY CMakeLists.txt main.cpp ./
-COPY include ./include
-COPY server ./server
-COPY router ./router
-COPY utils ./utils
-COPY database ./database
-COPY middlewares ./middlewares
-COPY repositories ./repositories
-COPY models ./models
 COPY controllers ./controllers
+COPY database ./database
+COPY include ./include
+COPY middlewares ./middlewares
+COPY models ./models
+COPY repositories ./repositories
+COPY router ./router
+COPY server ./server
+COPY utils ./utils
+COPY CMakeLists.txt main.cpp ./
 
 # Build source code
 RUN cmake -B build -S . -DCMAKE_BUILD_TYPE=Release
