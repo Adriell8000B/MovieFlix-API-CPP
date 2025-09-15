@@ -5,8 +5,8 @@
 #include <mongocxx/client.hpp>
 #include <mongocxx/collection-fwd.hpp>
 #include <mongocxx/uri.hpp>
-#include <string>
 #include <vector>
+#include <string>
 
 class MovieRepository {
 	private:
