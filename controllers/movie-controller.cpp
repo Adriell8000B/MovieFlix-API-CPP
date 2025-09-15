@@ -1,7 +1,10 @@
 #include "crow_all.h"
-#include "json.hpp"
 #include "movie_controller.hpp"
 #include "movie_repository.hpp"
+#include <bsoncxx/document/view-fwd.hpp>
+#include <exception>
+#include <string>
+#include <utility>
 #include <vector>
 
 MovieController::MovieController(
@@ -9,16 +12,20 @@ MovieController::MovieController(
 ):_MovieRepository(MovieRepository) {}
 
 crow::json::wvalue MovieController::GetMovies() {
-	std::vector<std::string> movies = this->_MovieRepository.RetrieveMovies();
-	nlohmann::json json_response;
-	nlohmann::json json_movies = nlohmann::json::array();
+	std::vector<std::string> movies_vector = this->_MovieRepository.RetrieveMovies();
+	crow::json::wvalue movies_json_array = crow::json::wvalue::list();
 
-	for (const auto& movie: movies) {
-		json_movies.push_back(movie);
+	try {
+		for(const auto& movie : movies_vector) {
+		crow::json::wvalue movie_json_object = crow::json::load(movie);
+
+			if(movie_json_object.t() != crow::json::type::Null) {
+				movies_json_array[movies_json_array.size()] = std::move(movie_json_object);
+			}
+		}
+	} catch (std::exception& e) {
+		std::cout << "GetMovies(): " << e.what() << "\n";
 	}
 
-	json_response["movies"] = json_movies;
-	std::string json_string = json_response.dump();
-
-	return crow::json::wvalue(json_string);
+	return movies_json_array;
 }
