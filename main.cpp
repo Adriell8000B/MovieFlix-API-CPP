@@ -6,7 +6,6 @@
 #include "movie_repository.hpp"
 #include "server.hpp"
 #include "utils.hpp"
-#include <mongocxx/collection-fwd.hpp>
 #include <cstdint>
 #include <string>
 
@@ -16,6 +15,7 @@ int main(void) {
   const std::string database_name = get_env("DATABASE_NAME");
   const std::string collection_name = get_env("COLLECTION_NAME");
   const std::string allowed_origin = get_env("ALLOWED_ORIGIN");
+  const std::string allowed_header = get_env("ALLOWED_HEADER");
   
   crow::App<crow::CORSHandler> app;
   Movies movies;
@@ -38,7 +38,8 @@ int main(void) {
 
   Middlewares middlewares(
     app,
-    allowed_origin
+    allowed_origin,
+    allowed_header
   );
 
   Server server(
