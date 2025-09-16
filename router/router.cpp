@@ -10,6 +10,10 @@ _app(app),
 _Movie_Controller(Movie_Controller) {}
 
 void Router::SetupRoutes() {
+	CROW_ROUTE(this->_app, "/")([]() {
+		return "Hi mom!";
+	});
+
 	CROW_ROUTE(this->_app, "/movies")([&]() {
 		return this->_Movie_Controller.GetMovies();
 	});
