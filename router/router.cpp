@@ -11,7 +11,7 @@ _Movie_Controller(Movie_Controller) {}
 
 void Router::SetupRoutes() {
 	CROW_ROUTE(this->_app, "/")([]() {
-		return "Hi mom!";
+		return crow::json::wvalue("Hi mom!");
 	});
 
 	CROW_ROUTE(this->_app, "/movies")([&]() {
