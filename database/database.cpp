@@ -23,7 +23,6 @@ void Database::connect() {
 				bsoncxx::builder::basic::kvp("ping", 1)
 			)
 		);
-		std::cout << "Mongodb connected!\n";
 	} catch(const mongocxx::exception& e) {
 		std::cout << "Couldn't connect to Mongodb: " << e.what() << "\n";
 	}
