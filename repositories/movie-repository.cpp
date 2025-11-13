@@ -34,11 +34,11 @@ std::vector<std::string> MovieRepository::RetrieveMovies(int limit) {
   return movies;
 }
 
-std::string MovieRepository::RerieveMovie(std::string movie_name) {
+std::string MovieRepository::RetrieveMovie(std::string movie_name) {
   std::string regex_pattern = ".*" + movie_name + ".*";
 
   auto filter = bsoncxx::builder::stream::document{}
-                << "title" << open_document << "$regex" << regex_pattern
+                << "movie_name" << open_document << "$regex" << regex_pattern
                 << "$options" << "i" << // 'i' for case-insensitive search
                 close_document << finalize;
 
@@ -53,6 +53,7 @@ std::string MovieRepository::RerieveMovie(std::string movie_name) {
       // Convert the BSON document to a JSON string
       results_json += bsoncxx::to_json(doc) + ",";
     }
+    std::cout<< results_json << "\n";
 
     // Clean up: remove the trailing comma if results were found
     if (results_json.length() > 1) {

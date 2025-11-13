@@ -31,7 +31,7 @@ crow::json::wvalue MovieController::GetMovies() {
 }
 
 crow::json::wvalue MovieController::GetMovie(std::string& movie_name) {
-  std::string movie_string = this->_MovieRepository.RerieveMovie("spider");
+  std::string movie_string = this->_MovieRepository.RetrieveMovie(movie_name);
   crow::json::wvalue movie_json = crow::json::wvalue::list();
 
   try {

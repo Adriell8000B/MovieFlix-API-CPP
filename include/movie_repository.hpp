@@ -25,7 +25,7 @@ class MovieRepository {
 	);
 
 	std::vector<std::string> RetrieveMovies(int limit = 0);
-	std::string RerieveMovie(std::string movie_name);
+	std::string RetrieveMovie(std::string movie_name);
 };
 
 #endif
