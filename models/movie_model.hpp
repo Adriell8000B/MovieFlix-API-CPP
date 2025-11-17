@@ -10,6 +10,7 @@ struct Movies {
   std::string movie_name;
   int movie_year;
   std::string movie_genre;
+  std::string movie_link;
 };
 
 #endif
