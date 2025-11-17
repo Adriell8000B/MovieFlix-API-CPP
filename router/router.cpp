@@ -17,4 +17,8 @@ void Router::SetupRoutes() {
 	CROW_ROUTE(this->_app, "/movies")([&]() {
 		return this->_Movie_Controller.GetMovies();
 	});
+
+	CROW_ROUTE(this->_app, "/movies/<string>")([&](std::string movie_name) {
+		return this->_Movie_Controller.GetMovie(movie_name);
+	});
 }

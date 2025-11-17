@@ -11,6 +11,7 @@ class MovieController {
 	public:
 	MovieController(MovieRepository& MovieRepository);
 	crow::json::wvalue GetMovies();
+	crow::json::wvalue GetMovie(std::string& movie_name);
 };
 
 #endif

@@ -24,7 +24,8 @@ class MovieRepository {
 		const std::string& collection_name
 	);
 
-	std::vector<std::string> RetrieveMovies();
+	std::vector<std::string> RetrieveMovies(int limit = 0);
+	std::string RetrieveMovie(std::string movie_name);
 };
 
 #endif
