@@ -7,8 +7,7 @@
 #include <utility>
 #include <vector>
 
-MovieController::MovieController(MovieRepository &MovieRepository)
-    : _MovieRepository(MovieRepository) {}
+MovieController::MovieController(MovieRepository &MovieRepository): _MovieRepository(MovieRepository) {}
 
 crow::json::wvalue MovieController::GetMovies() {
   std::vector<std::string> movies_vector = this->_MovieRepository.RetrieveMovies(18);

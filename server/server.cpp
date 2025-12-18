@@ -22,7 +22,7 @@ _PORT(PORT) {}
 
 void Server::listen() {
 	try {
-		this->_app.port(this->_PORT).multithreaded().run();
+		this->_app.port(this->_PORT).run();
 	} catch (std::exception& error) {
 		std::cerr << "Server::listen() -> an error ocurred: " << error.what() << "\n";
 	}
