@@ -10,7 +10,6 @@ add_executable(MovieFlix-API-CPP
 	router/router.cpp
 	database/database.cpp
 	utils/utils.cpp
-	utils/promise.cpp
 	middlewares/middlewares.cpp
 	repositories/movie-repository.cpp
 	controllers/movie-controller.cpp
